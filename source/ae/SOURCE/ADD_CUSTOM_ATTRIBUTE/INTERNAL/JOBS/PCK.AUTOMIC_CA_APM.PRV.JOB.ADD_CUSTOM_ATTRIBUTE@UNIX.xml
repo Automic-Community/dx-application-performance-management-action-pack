@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_UNIX AttrType="UNIX" name="PCK.AUTOMIC_CA_APM.PRV.JOB.ADD_CUSTOM_ATTRIBUTE@UNIX">
+<XHEADER state="1">
+<Title>Add custom attribute</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;UNIX&gt;|HOST</HostDst>
+<HostATTR_Type>UNIX</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>1</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_UNIX state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<ShellScript>1</ShellScript>
+<Command>0</Command>
+<Priority>0</Priority>
+<Shell>-bash</Shell>
+<ShellOptions/>
+<Com/>
+</ATTR_UNIX>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INC PCK.ITPA_SHARED.PUB.INCLUDE.START_STOP_JOB_ACCORDING_TO_AGENT_OS]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[: DEFINE &STRING_ARR#, string, 30
+: INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
+
+:INC PCK.ITPA_SHARED.PUB.INCLUDE.ATTACH
+
+!-------------------------------------logging input parameters----------------------------->
+
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.PARAM_VALIDATION
+: SET &UC4RB_LOGGING_PARAMETER# = "REST API Url"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_CA_APM_URL#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+: SET &UC4RB_LOGGING_PARAMETER# = "Vertex Id"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_CA_APM_TRANS_IDS#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+: SET &UC4RB_LOGGING_PARAMETER# = "Attribute Name"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_CA_APM_ATTR_NAME#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+: SET &UC4RB_LOGGING_PARAMETER# = "Attribute Value"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_CA_APM_ATTR_VALUE#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
+
+!------------------------------------------ Error Handling --------------------------------------------------------------------------------------------------------
+: SET &UC4RB_LOGGING_INFO# = "******** ADD CUSTOM ATTRIBUTE ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** ADD CUSTOM ATTRIBUTE ACTION EXECUTION FAILED ********"
+
+!----------------------------preparing add custom attribute command -----------------------------------
+:DEFINE &CA_APM_VERTEX_IDS#, string, 90
+
+:FILL &CA_APM_VERTEX_IDS#[] = STR_SPLIT(&UC4RB_CA_APM_TRANS_IDS#,",")
+
+:SET &VAR# = 1
+:SET &VERTEX_IDS_LEN# = LENGTH(&CA_APM_VERTEX_IDS#[],SIZE)
+:SET &UC4RB_CA_APM_VERTEX# = ""
+
+:WHILE &VAR# LT &VERTEX_IDS_LEN#
+:   SET &VAR# = FORMAT(&VAR#,"0")
+:   SET &UC4RB_ESCAPED_STRING# = &CA_APM_VERTEX_IDS#[&VAR#]
+:   INC PCK.AUTOMIC_CA_APM.PUB.INCLUDE.ESCAPE_ARG_VALUE@UNIX
+:   SET &UC4RB_CA_APM_VERTEX# = STR_CAT(&UC4RB_CA_APM_VERTEX#,&UC4RB_ESCAPED_STRING#)
+:   SET &UC4RB_CA_APM_VERTEX# = STR_CAT(&UC4RB_CA_APM_VERTEX#,',')
+:  SET &VAR# = &VAR#+ 1
+:ENDWHILE
+
+: SET &UC4RB_ESCAPED_STRING# = &CA_APM_VERTEX_IDS#[&VERTEX_IDS_LEN#]
+: INC PCK.AUTOMIC_CA_APM.PUB.INCLUDE.ESCAPE_ARG_VALUE@UNIX
+: SET &UC4RB_CA_APM_VERTEX# = STR_CAT(&UC4RB_CA_APM_VERTEX#,&UC4RB_ESCAPED_STRING#)
+
+: SET &UC4RB_ESCAPED_STRING# = &UC4RB_CA_APM_ATTR_NAME#
+: INC PCK.AUTOMIC_CA_APM.PUB.INCLUDE.ESCAPE_ARG_VALUE@UNIX
+: SET &UC4RB_CA_APM_ATT_NAME# =  &UC4RB_ESCAPED_STRING#
+
+: SET &UC4RB_ESCAPED_STRING# = &UC4RB_CA_APM_ATTR_VALUE#
+: INC PCK.AUTOMIC_CA_APM.PUB.INCLUDE.ESCAPE_ARG_VALUE@UNIX
+: SET &UC4RB_CA_APM_ATT_VALUE# =  &UC4RB_ESCAPED_STRING#
+
+
+!creating json object
+:set &JSON# = " {"
+:SET &JSON# = STR_CAT(&JSON#,'"vertexIds":[')
+:SET &JSON# = STR_CAT(&JSON#,'&UC4RB_CA_APM_VERTEX#')
+:SET &JSON# = STR_CAT(&JSON#,"],")
+:SET &JSON# = STR_CAT(&JSON#,'"attributeName":&UC4RB_CA_APM_ATT_NAME#')
+:SET &JSON# = STR_CAT(&JSON#,',"attributeValue":&UC4RB_CA_APM_ATT_VALUE#')
+:SET &JSON# = STR_CAT(&JSON#,"}")
+
+:SET &UC4RB_JSON_FILE# = "attributeJSON-&$RUNID#.txt"
+:SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &AGENT#)
+:SET &UC4RB_JSON_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"&UC4RB_JSON_FILE#")
+:SET &HND# = CREATE_PROCESS(NEW)
+:SET &RET# = PUT_PROCESS_LINE(&HND#, &JSON#)
+:SET &RET# = WRITE_PROCESS(&HND#, &UC4RB_JSON_FILE_PATH# ,&AGENT#,&LOGIN#,OVERWRITE)
+:IF &RET# <> 0
+:  PRINT "Error in writing file to path : &UC4RB_JSON_FILE_PATH#"
+:ENDIF
+:CLOSE_PROCESS &HND#
+
+!creating curl command
+:SET &UC4RB_CA_APM_CMD# = "curl -s -X POST --data-binary "
+:SET &UC4RB_CA_APM_CMD# = STR_CAT(&UC4RB_CA_APM_CMD#,'"@&UC4RB_JSON_FILE_PATH#"')
+:SET &UC4RB_CA_APM_ESCAPE_STRING# = "&UC4RB_CA_APM_URL#"
+:INC PCK.AUTOMIC_CA_APM.PUB.INCLUDE.ESCAPE_ARG_VALUE@UNIX
+
+:SET &UC4RB_CA_APM_URL# = STR_CAT(&UC4RB_CA_APM_URL#,"/apm/appmap/private/attributes/assign")
+:SET &UC4RB_CA_APM_URL# = STR_CAT('"',&UC4RB_CA_APM_URL#)
+:SET &UC4RB_CA_APM_URL# = STR_CAT(&UC4RB_CA_APM_URL#,'"')
+:SET &UC4RB_CA_APM_CMD# = STR_CAT(&UC4RB_CA_APM_CMD# , " &UC4RB_CA_APM_URL#")
+
+:SET &UC4RB_CA_APM_CMD# = STR_CAT(&UC4RB_CA_APM_CMD#,' --header "Content-Type:application/json"')
+
+! token
+: SET &UC4RB_ENCRYPTED_PASSWORD_TMP# = "&UC4RB_CA_APM_TOKEN#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.DECRYPT_PASSWORD
+: SET &UC4RB_CA_APM_CMD# = STR_CAT(&UC4RB_CA_APM_CMD#, ' --header "Authorization: Bearer $UC4_DECRYPTED_PWD "')
+
+:PRINT &UC4RB_CA_APM_CMD#
+response=`&UC4RB_CA_APM_CMD#`
+echo "UC4RB_JSON_RESPONSE::=$response"
+rm  &UC4RB_JSON_FILE_PATH#
+
+!---------------------------CHECK JOB STATUS--------------------------------
+:INC PCK.AUTOMIC_CA_APM.PUB.INCLUDE.CHECK_JOBSTATUS@UNIX
+:INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_FOOTER]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI><![CDATA[:INC PCK.AUTOMIC_CA_APM.PUB.INCLUDE.CHECK_FAILED_IDS]]></OSCRI>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_UNIX>
+</uc-export>
