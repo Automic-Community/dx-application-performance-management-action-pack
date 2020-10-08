@@ -12,8 +12,6 @@
 CA Application Performance Management (CA APM) proactively monitors and provides diagnostic insights into applications across mobile, web, cloud, microservices, containers and mainframe. Patent-pending analytics provides expertise in the form of guided assisted triage workflows for in-depth, root-cause diagnostics across development and production applications, simplifying and speeding the time it takes to find and fix issues. CA Application Performance Management scales to your organization?s needs and automatically correlates multiple sources of data to help you sort through the data and act decisively, helping to improve user experience and application performance.
 CA Application Performance Management is available on-premises for enterprise customers or through Digital Experience Insights from CA, our SaaS-based digital operations monitoring and analytics platform for cloud natives.
 
-=Supported versions=
-v 10.5
 
 =Setup=
 * The Agent should be able to access CA RA rest API endpoint URL in order to make HTTP requests.
@@ -23,7 +21,7 @@ v 10.5
 
 =Common Inputs=
 -REST API URL*:             The URL specifies the entry point of the CA APM REST service. E.g. http://207.138.132.8:10488
--Token*:                         	Specify the token to connect to CA APM
+-Token*:                    Specify the token to connect to CA APM
 
 =Actions=
 Following actions are supported.

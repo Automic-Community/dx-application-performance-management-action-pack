@@ -7,13 +7,12 @@
 
 ###### Prerequisite:
 
-	1. AE (Automation Engine) is installed. 
-	2. On AE, Please Install ITPA_SHARED and File System package.
-	3. apm (Automic package Manager) also installed.
+	1. AE (Automation Engine) should be installed. 
+	2. apm (Automic package Manager) should be installed.
 		a. https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/application-performance-management/10-7.html
-	4. If package is java action pack then (check for java pack: package-dir/tools/pom.xml)
-		a. Java is installed. Reference to install java: https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html
-		b. Maven is installed. reference : https://maven.apache.org/install.html 
+	3. If Action Pack is java based then (check for java tool: package-dir/tools/pom.xml)
+		a. Java should be installed. Reference to install java: https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html
+		b. Maven should be installed. reference : https://maven.apache.org/install.html 
 
 ###### Apm doctor:
 
@@ -25,17 +24,21 @@ There are two sub-commands:
 | doctor check | analyze and show up current environment issues	| apm doctor check   |
 | doctor fix   | repair environment issues	                | apm doctor fix     |
 
+
 ###### Steps to install the action package on AE:
 
 	1. Clone the code to your machine.
 	2. Go to the package directory.
-	3. Run maven command if uses java action pack: mvn clean package
-	4. Run the command: 
-	apm upload -force -u <Name>/<Department> -c <Client-id> -H <Host> -S AUTOMIC -y -ia -ru
+	3. If action pack is java based, Run the maven command 'mvn clean package' inside the directory containing the pom.xml file.(source/tools/)
+	4. Run the below command in the directory containing the package.xml (source/):
+	
+		apm upload -force -u <Name>/<Department> -c <Client-id> -H <Host> -pw <Password> -S AUTOMIC -y -ia -ru
+		
 		- Name: Name use the user.
 		- Department: Name of the Department.
 		- Client-id: Provide the client id.
 		- Host: Host on which the AE is running.
+		- Password: Password.
 
 ###### Verifying the installation:
 

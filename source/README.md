@@ -8,15 +8,17 @@ Action:
 
 	Add Custom Attributes
 
-Compatibility:
+Prerequisite:
 
-	1. CA APM V10.5
-	2. Open JDK Java 11
-	3. Oracle Java 1.7 
+	> Compatibility:
+
+		1. CA APM V10.5
+		2. Open JDK Java 11
+		3. Oracle Java 1.7 
 	
 	Full documentation for this Action Pack is included as a documentation object once the Package is installed in your CA Automic One Automation Platform.
 
-APM Action pack depends on
+	> Action pack depends on
 
-	- Automation.Engine » AutomationEngine (minimum version Automation.Engine 12.0)
-	- Package.ITPA.Shared » PCK.ITPA_SHARED (minimum version Package.ITPA.Shared 1.1)
+		1. Automation.Engine » AutomationEngine (minimum version Automation.Engine 12.0)
+		2. Package.ITPA.Shared » PCK.ITPA_SHARED (minimum version Package.ITPA.Shared 1.1)
