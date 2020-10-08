@@ -9,7 +9,7 @@
 
 	1. AE (Automation Engine) should be installed. 
 	2. apm (Automic package Manager) should be installed.
-		a. https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/application-performance-management/10-7.html
+		a. https://docs.automic.com/documentation/webhelp/english/AA/12.3/DOCU/12.3/Automic%20Automation%20Guides/Content/PackageManager/aboutAPM.htm
 	3. If Action Pack is java based then (check for java tool: package-dir/tools/pom.xml)
 		a. Java should be installed. Reference to install java: https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html
 		b. Maven should be installed. reference : https://maven.apache.org/install.html 
