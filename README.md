@@ -5,7 +5,6 @@
 
 CA Application Performance Management (CA APM) proactively monitors and provides diagnostic insights into applications across mobile, web, cloud, microservices, containers and mainframe.
 The release-run-remediate process is controlled by CA Continuous Delivery Automation (CA CDA - formerly known as CA Automic Release Automation) with CA APM as a conduit for metadata-enriched telemetry. Meaning more than just using commodity metrics to trigger automations, if there is metadata known at runtime that would be useful to a downstream remediation, that metadata can be attached to the deployed application within CA APM during release, and can be used by CA CDA to trigger a remediation process. 
-[Check the Feature support by action pack](source/README.md)
 		
 ###### Actions
 
@@ -23,7 +22,7 @@ The release-run-remediate process is controlled by CA Continuous Delivery Automa
 2. Automic Package Manager should be installed.
 3. ITPA Shared Action Pack should be installed. 
 
-###### Steps to install the action package on AE:
+###### Steps to install action pack source code:
 
 1. Clone the code to your machine.
 2. Go to the package directory.
